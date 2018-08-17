@@ -1,12 +1,13 @@
 import java.io.FileNotFoundException;
 import java.io.File;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.Scanner;
 
 public class GroceryStore {
 
     // A menu to find out if user wants to add or remove a product. Returns "ADD", "REMOVE", or "GO BACK".
-    protected static String addOrRemMenu() {
+    protected static String addOrRemMenu(ShoppingCart sc) {
         System.out.println("1. ADD");
         System.out.println("2. REMOVE");
         System.out.println("3. GO BACK");
@@ -22,10 +23,17 @@ public class GroceryStore {
 
             // Both the command name or number can be selected.
             if (upperInput.equals("ADD") || input.equals("1")) { return "ADD"; }
-            else if (upperInput.equals("REMOVE") || input.equals("2")) { return "REMOVE"; }
+            else if (upperInput.equals("REMOVE") || input.equals("2")) {
+                // Only attempt to remove an item if there is an item in the cart.
+                if (sc.getSize() == 0) {
+                    System.out.println("There aren't any items in the shopping cart to remove. Please select another option.");
+                    continue;
+                }
+                return "REMOVE";
+            }
             else if (upperInput.equals("GO BACK") || input.equals("3")) { return "GO BACK"; }
             else {
-                System.out.println("Invalid command detected. Please try again");
+                System.out.println("Invalid command detected. Please try again.");
             }
         }
     }
@@ -82,6 +90,11 @@ public class GroceryStore {
         }
 
         input.close();
+
+        // Sort by name.
+        Collections.sort(meats);
+        Collections.sort(produce);
+        Collections.sort(beverages);
 
         // Assign unique IDs.
         int subid = 1;
@@ -159,7 +172,7 @@ public class GroceryStore {
 
                     if (sectInput.equals("MEATS")) {
                         // Find out if the user wants to add or remove an item.
-                        String addOrRem = addOrRemMenu();
+                        String addOrRem = addOrRemMenu(sc);
 
                         // Add an item, remove an item, or go back to the main menu.
                         if (addOrRem.equals("ADD")) {
@@ -176,7 +189,7 @@ public class GroceryStore {
                             continue;
                         }
                     } else if (sectInput.equals("PRODUCE")) {
-                        String addOrRem = addOrRemMenu();
+                        String addOrRem = addOrRemMenu(sc);
 
                         if (addOrRem.equals("ADD")) {
                             displayProducts(produce);
@@ -192,7 +205,7 @@ public class GroceryStore {
                             continue;
                         }
                     } else if (sectInput.equals("BEVERAGES")) {
-                        String addOrRem = addOrRemMenu();
+                        String addOrRem = addOrRemMenu(sc);
 
                         if (addOrRem.equals("ADD")) {
                             displayProducts(beverages);
@@ -221,6 +234,9 @@ public class GroceryStore {
             else if (upperMainMenuInput.equals("EXIT") || mainMenuInput.equals("3")) {
                 System.exit(0);
             }
+            else {
+                System.out.println("Invalid command detected. Please try again.");
+            }
         }
     }
 
@@ -230,14 +246,14 @@ public class GroceryStore {
        Returns the name(capitalized) or "GO BACK".
      */
     protected static String sectionMenu() {
+        System.out.println("1. MEATS");
+        System.out.println("2. PRODUCE");
+        System.out.println("3. BEVERAGES");
+        System.out.println("4. MAIN MENU");
+        System.out.println("Enter a command number (1-4) or the name of the command.");
+
         // Loop until a valid answer is received.
         while (true) {
-            System.out.println("1. MEATS");
-            System.out.println("2. PRODUCE");
-            System.out.println("3. BEVERAGES");
-            System.out.println("4. MAIN MENU");
-            System.out.println("Enter a command number (1-4) or the name of the command.");
-
             // Get user selection.
             Scanner scan = new Scanner(System.in);
             String input = scan.nextLine();
@@ -254,7 +270,7 @@ public class GroceryStore {
             else if (upperInput.equals("MAIN MENU") || input.equals("4")) { return "MAIN MENU"; }
 
             else {
-                System.out.println("Invalid command detected. Please try again");
+                System.out.println("Invalid command detected. Please try again.");
             }
         }
     }
