@@ -1,0 +1,31 @@
+Produce
+Tomato/0.88/lb
+Cilantro/0.33/rw
+Bell Pepper/0.50/ct
+Cherries/3.98/lb
+Mango/1.00/each
+Avocado/1.50/ct
+Cantaloupe/1.68/ct
+Garlic/0.50/each
+Limes/0.20/each
+Banana/0.49/lb
+Potatoes/0.68/lb
+Onions/0.88/lb
+Watermelon/4.98/each
+Meats
+Ground Beef/10.47/3 lb tray
+Chicken Breasts/1.99/lb
+Chicken Wings/1.49/lb
+Ground Turkey/3.39/lb
+Boneless Chicken Tenderloins/6.99/2.5 lb
+Bratwurst Sausage/2.99/18 oz
+Beef Boneless Chuck Steak/3.47/lb
+Pork Chops/3.99/lb
+Beverages
+Milk/2.29/1 gal
+Green Tea/2.79/128 fl oz
+Sweetened Tea/4.29/89 fl oz
+Cranberry Juice/2.59/ 64 fl oz
+Apple Juice/2.99/ 64 fl oz
+Grape Juice/5.49/96 fl oz
+Orange Juice/3.69/1 gal
