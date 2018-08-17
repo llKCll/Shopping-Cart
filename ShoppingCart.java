@@ -1,5 +1,6 @@
 import java.math.BigDecimal;
 import java.util.ArrayList;
+import java.util.Collections;
 
 public class ShoppingCart {
 
@@ -18,11 +19,18 @@ public class ShoppingCart {
         }
     }
 
-    // Print display of Foods in the shopping cart.
+    // Print display of Foods in the shopping cart. Additional effect is the cart is sorted by name.
     protected void displayCart() {
+        Collections.sort(this.cart);
+
         for (Food item : this.cart) {
             System.out.println(item.getFoodId() + " " + item.getFoodName() + " x" + item.getFoodQuantity() + " $" + item.getFoodPrice());
         }
+    }
+
+    // Return size of the cart.
+    protected int getSize() {
+        return cart.size();
     }
 
     // Return true if Food is in cart, false otherwise.
