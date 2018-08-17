@@ -1,6 +1,6 @@
 import java.math.BigDecimal;
 
-public class Food {
+public class Food implements Comparable<Food> {
 
     private String id;
     private String name;
@@ -47,4 +47,10 @@ public class Food {
     }
 
     protected void setFoodQuantity(int n) { quantity = n; }
+
+    // Sort object by name
+    @Override
+    public int compareTo(Food other) {
+        return this.getFoodName().compareTo(other.getFoodName());
+    }
 }
